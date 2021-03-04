@@ -1,20 +1,13 @@
 import 'reflect-metadata';
 import express from "express";
 import "./database"; 
+import { router } from './routes';
 
 const app = express();
 
-app.get("/", (request, response) => {
-return response.json({message: "Hello World"});
-});
+app.use(express.json());
 
-
-app.post("/", (request, response) =>{
-
-    //receber dados clientes
-
-return response.json({mensage: "Os dados foram salvos com sucesso"});
-});
+app.use(router);
 
 
 app.listen (3333, () => console.log("servidor rodando!  "))
